@@ -28,24 +28,25 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     };
     
-    function showId() {
+    function showId(event) {
         let idNum = event.target.id;
         let idText = document.createTextNode(idNum);
         event.target.appendChild(idText);
     };
 
-    function removeId() {
+    function removeId(event) {
         event.target.removeChild(event.target.firstChild);
     };
 
-    function randomColor() {
+    
+    function randomColor(event) {
         let r = Math.floor(Math.random() * 256);
         let g = Math.floor(Math.random() * 256);
         let b = Math.floor(Math.random() * 256);
         event.target.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ' )';
     };
 
-    function removeSquare() {
+    function removeSquare(event) {
         let squares = document.getElementsByClassName('squares');
         let idArray = [];
         for (i = 0; i < squares.length; i++) {
