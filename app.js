@@ -55,10 +55,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if(idArray.indexOf(event.target.id) == idArray.length - 1) {
                 alert('There are no squares after the selected square!');
             } else {
-                remove()
+                let removeTargetEven = (squares[idArray.indexOf(event.target.id) + 1]);
+                removeTargetEven.remove();
             }
-        //} else {
-            //pl
-        };
+        } else if (event.target.id % 2 == 1) {
+            if(idArray.indexOf(event.target.id) == 0) {
+                alert('There are no squares before the selected square!');
+            } else {
+                let removeTargetOdd = (squares[idArray.indexOf(event.target.id) - 1]);
+                removeTargetOdd.remove();
+            }
+        }
     };
 });
