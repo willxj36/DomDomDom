@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.squares {
+    background: black;
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin: 10px;
+}
