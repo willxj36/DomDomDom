@@ -14,19 +14,51 @@ document.addEventListener('DOMContentLoaded', function() {
         clickNum.push(1);
         div.id = clickNum.length;
         let squares = document.getElementsByClassName('squares');
-        for (i = 0; i < clickNum.length; i++) {
+        for (i = 0; i < squares.length; i++) {
             squares[i].addEventListener('mouseover', showId);
         };
-        for (i = 0; i < clickNum.length; i++) {
-            squares[i].addEventListener('mouseout', function() {
-                event.target.removeChild(event.target.firstChild);
-            }); //creates identical errors repeatedly (number of errors returned in console is equal to [last square #] - [# of square mouse is moved off of]), but functionally does exactly what is called for...
-        }    
-    }
+        for (i = 0; i < squares.length; i++) {
+            squares[i].addEventListener('mouseout', removeId);
+        };
+        for (i = 0; i < squares.length; i++) {
+            squares[i].addEventListener('click', randomColor);
+        };
+        for (i = 0; i < squares.length; i++) {
+            squares[i].addEventListener('dblclick', removeSquare);
+        };
+    };
     
     function showId() {
         let idNum = event.target.id;
-        var idText = document.createTextNode(idNum);
+        let idText = document.createTextNode(idNum);
         event.target.appendChild(idText);
-    }
-})
+    };
+
+    function removeId() {
+        event.target.removeChild(event.target.firstChild);
+    };
+
+    function randomColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        event.target.style.backgroundColor = 'rgb(' + r + ', ' + g + ', ' + b + ' )';
+    };
+
+    function removeSquare() {
+        let squares = document.getElementsByClassName('squares');
+        let idArray = [];
+        for (i = 0; i < squares.length; i++) {
+            idArray.push(squares[i].getAttribute('id'));
+        };
+        if(event.target.id % 2 == 0) {
+            if(idArray.indexOf(event.target.id) == idArray.length - 1) {
+                alert('There are no squares after the selected square!');
+            } else {
+                remove()
+            }
+        //} else {
+            //pl
+        };
+    };
+});
